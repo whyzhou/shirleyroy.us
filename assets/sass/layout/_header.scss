@@ -20,23 +20,14 @@
 		background-image: -ms-radial-gradient(rgba(0,0,0,0.25) 25%, rgba(0,0,0,0) 55%);
 		background-image: radial-gradient(rgba(0,0,0,0.25) 25%, rgba(0,0,0,0) 55%);
 		max-width: 100%;
+		min-height: 100vh;
+		padding-top: 4em;
 		text-align: center;
 
 		> * {
 			@include vendor('transition', 'opacity #{_duration(article)} ease-in-out');
 			position: relative;
 			margin-top: 3.5rem;
-
-			&:before {
-				content: '';
-				display: block;
-				position: absolute;
-				top: calc(-3.5rem - 1px);
-				left: calc(50% - #{_size(border-width) * 1});
-				width: _size(border-width);
-				height: calc(3.5rem + 1px);
-				background: _palette(border);
-			}
 		}
 
 		> :first-child {
@@ -59,6 +50,7 @@
 					font-size: 2rem;
 				}
 			}
+
 		}
 
 		.content {
@@ -67,6 +59,17 @@
 			border-top-width: _size(border-width);
 			border-bottom-width: _size(border-width);
 			max-width: 100%;
+
+			&:before {
+				content: '';
+				display: block;
+				position: absolute;
+				left: calc(50% - #{_size(border-width) * 1});
+				width: _size(border-width);
+				height: calc(3.5rem + 1px);
+				background: _palette(border);
+				top: calc(-3.5rem - 1px);
+			}
 
 			.inner {
 				@include vendor('transition', (
@@ -91,72 +94,63 @@
 				line-height: 2;
 			}
 		}
-
-		nav {
-			ul {
-				@include vendor('display', 'flex');
-				margin-bottom: 0;
-				list-style: none;
-				padding-left: 0;
-				border: solid _size(border-width) _palette(border);
-				border-radius: _size(border-radius);
-
-				li {
-					padding-left: 0;
-					border-left: solid _size(border-width) _palette(border);
-
-					&:first-child {
-						border-left: 0;
-					}
-
-					a {
-						display: block;
-						min-width: 7.5rem;
-						height: 2.75rem;
-						line-height: 2.75rem;
-						padding: 0 1.25rem 0 (1.25rem + _font(letter-spacing));
-						text-transform: uppercase;
-						letter-spacing: _font(letter-spacing);
-						font-size: 0.8rem;
-						border-bottom: 0;
-
-						&:hover {
-							background-color: _palette(border-bg);
-						}
-
-						&:active {
-							background-color: _palette(border-bg-alt);
-						}
-					}
-				}
-			}
-
-			&.use-middle {
-				&:after {
+		.action {
+				@include vendor('transition', (
+					'opacity #{_duration(article)} ease-in-out'
+				));
+				@include vendor('transition-delay', '0.75s');
+				&:before {
 					content: '';
 					display: block;
 					position: absolute;
-					top: 0;
 					left: calc(50% - #{_size(border-width) * 1});
 					width: _size(border-width);
-					height: 100%;
+					height: calc(3.5rem + 1px);
 					background: _palette(border);
+					top: calc(-3.5rem - 1px);
 				}
 
-				ul {
-					li {
-						&.is-middle {
-							border-left: 0;
-						}
-					}
-				}
-			}
 		}
 
-		body.is-article-visible & {
-			@include vendor('transform', 'scale(0.95)');
-			@include vendor('filter', 'blur(0.1rem)');
-			opacity: 0;
+		.start {
+			margin: 0;
+			width: 52%;
+
+			> * {
+				height: 25vh;
+				width: 45%;
+				@include vendor('transition', (
+					'height #{_duration(intro)} ease-in 1s',
+					'width 0s ease-out 2s',
+					'opacity #{_duration(article)} ease-in-out 0.25s'
+				));
+			}
+
+			&.line-y {
+				.left{
+					border-right: 1px solid white;
+				}
+				.right{
+					border-left: 1px solid white;
+				}
+			}
+
+			&.line-x > * {
+				border-bottom: 1px solid white;
+				height: 0;
+			}
+
+			.left{
+				float:left;
+			}
+			.right{
+				float:right;
+			}
+
+			&::after{
+				clear: both;
+			}
+
 		}
 
 		body.is-preload & {
@@ -172,6 +166,24 @@
 					padding-top: 0;
 					padding-bottom: 0;
 					opacity: 0;
+				}
+			}
+
+			.action {
+				opacity: 0;
+			}
+
+			.line-y {
+				.left, .right{
+					opacity: 0;
+					height: 0;
+				}
+
+			}
+			.line-x {
+				.left, .right{
+					opacity: 0;
+					width: 0;
 				}
 			}
 		}
@@ -227,35 +239,6 @@
 					padding: 2.5rem 0;
 				}
 			}
-
-			nav {
-				ul {
-					@include vendor('flex-direction', 'column');
-					min-width: 10rem;
-					max-width: 100%;
-
-					li {
-						border-left: 0;
-						border-top: solid _size(border-width) _palette(border);
-
-						&:first-child {
-							border-top: 0;
-						}
-
-						a {
-							height: 3rem;
-							line-height: 3rem;
-							min-width: 0;
-							width: 100%;
-						}
-					}
-				}
-
-				&.use-middle {
-					&:after {
-						display: none;
-					}
-				}
-			}
 		}
 	}
+

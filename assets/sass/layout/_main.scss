@@ -1,102 +1,115 @@
-///
-/// Dimension by HTML5 UP
-/// html5up.net | @ajlkn
-/// Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-///
-
 /* Main */
-
 	#main {
-		@include vendor('flex-grow', '1');
-		@include vendor('flex-shrink', '1');
-		@include vendor('display', 'flex');
-		@include vendor('align-items', 'center');
-		@include vendor('justify-content', 'center');
-		@include vendor('flex-direction', 'column');
-		position: relative;
-		max-width: 100%;
-		z-index: 3;
-
-		article {
-			@include vendor('transform', 'translateY(0.25rem)');
+		.show-on-scroll {
+			max-height: 0px;
+			padding: 0 1em;
+			opacity: 0.25;
+			overflow: hidden;
 			@include vendor('transition', (
-				'opacity #{_duration(article)} ease-in-out',
-				'transform #{_duration(article)} ease-in-out'
+				'max-height #{_duration(intro)} ease-in-out 0s',
+				'padding #{_duration(intro)} ease 0s',
+				'opacity #{_duration(article)} ease-in-out 0s'
 			));
-			@include padding(2.5rem, 2.5rem, (2rem, 0, 1rem, 0));
-			position: relative;
-			width: 40rem;
-			max-width: 100%;
-			background-color: transparentize(_palette(bg), 0.15);
-			border-radius: _size(border-radius);
-			opacity: 0;
+			will-change: max-height, opacity;
 
-			&.active {
-				@include vendor('transform', 'translateY(0)');
-				opacity: 1;
+		}
+
+		.is-visible {
+			max-height: 100%;
+			opacity: 1;
+		}
+
+	}
+
+	#timeline {
+		.timeblock{
+			height: 100vh;
+			padding: 0 2em;
+			background-image: radial-gradient(rgba(160, 9, 9, 0.25) 25%, rgba(0,0,0,0) 55%);
+			background-repeat: no-repeat;
+			background-size: contain;
+			background-position-y: center;
+
+
+
+			&:after {
+				clear:both;
 			}
 
-			.close {
+
+			@include breakpoint('<=xlarge') {
+				padding: 0rem 10rem;
+			}
+
+			@include breakpoint('<=small') {
+				padding: 0rem 1rem;
+			}
+
+			@include breakpoint('<=xsmall') {
+				padding: 1rem;
+			}
+		}
+
+		.event {
+			width: 47%;
+
+			.event-wrapper {
 				display: block;
-				position: absolute;
+				border-top: solid _size(border-width) _palette(border);
+				border-bottom: solid _size(border-width) _palette(border);
+				height: 30vh;
+
+				&.is-visible {
+					padding: 1em;
+				}
+			}
+
+			h3.year {
+				font-size: 24px;
+			}
+
+			&:before, &:after {
+				content: '';
+				display: block;
+				position: relative;
+				left: calc(50% - #{_size(border-width) * 1});
+				width: _size(border-width);
+				background: _palette(border);
+				height: 25vh;
+				transition: opacity .3s .25s ease-out;
+			}
+			&:before {
 				top: 0;
-				right: 0;
-				width: 4rem;
-				height: 4rem;
-				cursor: pointer;
-				text-indent: 4rem;
-				overflow: hidden;
-				white-space: nowrap;
+			}
 
-				&:before {
-					@include vendor('transition', 'background-color #{_duration(transition)} ease-in-out');
-					content: '';
-					display: block;
-					position: absolute;
-					top: 0.75rem;
-					left: 0.75rem;
-					width: 2.5rem;
-					height: 2.5rem;
-					border-radius: 100%;
-					background-position: center;
-					background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20px" height="20px" viewBox="0 0 20 20" zoomAndPan="disable"><style>line { stroke: #{_palette(border)}; stroke-width: 1; }</style><line x1="2" y1="2" x2="18" y2="18" /><line x1="18" y1="2" x2="2" y2="18" /></svg>');
-					background-size: 20px 20px;
-					background-repeat: no-repeat;
-				}
-
-				&:hover {
-					&:before {
-						background-color: _palette(border-bg);
-					}
-				}
-
-				&:active {
-					&:before {
-						background-color: _palette(border-bg-alt);
-					}
-				}
+			&:after {
+				bottom: 0;
 			}
 		}
 
-		@include breakpoint('<=small') {
-			article {
-				@include padding(2rem, 2rem, (1.5rem, 0, 0.5rem, 0));
+		.left {
+			float:left;
 
-				.close {
-					&:before {
-						top: 0.875rem;
-						left: 0.875rem;
-						width: 2.25rem;
-						height: 2.25rem;
-						background-size: 14px 14px;
-					}
-				}
+			&:after {
+				height: 45vh;
+			}
+
+			.show-on-scroll {
+				@include vendor('transition-delay', '0.25s');
+			}
+		}
+		.right {
+			float:right;
+			&:before {
+				height: 45vh;
+			}
+
+			.show-on-scroll {
+				@include vendor('transition-delay', '0.5s');
 			}
 		}
 
-		@include breakpoint('<=xsmall') {
-			article {
-				@include padding(2rem, 1.5rem, (1rem, 0, 0.5rem, 0));
-			}
+		#block-00 {
+			background-image: url(../../images/block-00.png);
 		}
 	}

@@ -31,12 +31,8 @@
 
 // Component.
 
-	@import 'components/form';
-	@import 'components/box';
 	@import 'components/icon';
 	@import 'components/image';
-	@import 'components/list';
-	@import 'components/actions';
 	@import 'components/icons';
 	@import 'components/table';
 	@import 'components/button';
@@ -46,5 +42,6 @@
 	@import 'layout/bg';
 	@import 'layout/wrapper';
 	@import 'layout/header';
+	@import 'layout/nav';
 	@import 'layout/main';
 	@import 'layout/footer';
