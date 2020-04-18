@@ -114,11 +114,11 @@
 
 		.start {
 			margin: 0;
-			width: 52%;
+			width: 54%;
 
 			> * {
 				height: 25vh;
-				width: 45%;
+				width: 48%;
 				@include vendor('transition', (
 					'height #{_duration(intro)} ease-in 1s',
 					'width 0s ease-out 2s',

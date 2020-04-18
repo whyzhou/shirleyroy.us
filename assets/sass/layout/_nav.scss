@@ -1,0 +1,123 @@
+///
+/// Dimension by HTML5 UP
+/// html5up.net | @ajlkn
+/// Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+///
+
+/* Header */
+
+	nav {
+		@include vendor('display', 'flex');
+		@include vendor('flex-direction', 'column');
+		@include vendor('align-items', 'center');
+		@include vendor('transition', (
+			'transform #{_duration(article)} ease-in-out',
+			'filter #{_duration(article)} ease-in-out',
+			'opacity #{_duration(article)} ease-in-out',
+		));
+
+
+
+		ul {
+			@include vendor('display', 'flex');
+			margin-bottom: 0;
+			list-style: none;
+			padding-left: 0;
+
+			li {
+				padding-left: 0;
+
+				&:first-child {
+					border-left: 0;
+				}
+
+				a {
+					display: block;
+					min-width: 7.5rem;
+					height: 2.75rem;
+					line-height: 2.75rem;
+					padding: 0 1.25rem 0 (1.25rem + _font(letter-spacing));
+					text-transform: uppercase;
+					letter-spacing: _font(letter-spacing);
+					font-size: 0.8rem;
+					border-bottom: 0;
+					text-align: center;
+
+					&:hover {
+						background-color: _palette(border-bg);
+					}
+
+					&:active {
+						background-color: _palette(border-bg-alt);
+					}
+				}
+			}
+		}
+
+		&.use-middle {
+			&:after {
+				content: '';
+				display: block;
+				position: absolute;
+				top: 0;
+				left: calc(50% - #{_size(border-width) * 1});
+				width: _size(border-width);
+				height: 100%;
+				background: _palette(border);
+			}
+
+			ul {
+				li {
+					&.is-middle {
+						border-left: 0;
+					}
+				}
+			}
+		}
+
+		@include breakpoint('<=medium') {
+		}
+
+		@include breakpoint('<=small') {
+			> * {
+				margin-top: 2rem;
+
+				&:before {
+					top: calc(-2rem - 1px);
+					height: calc(2rem + 1px);
+				}
+			}
+		}
+
+		@include breakpoint('<=xsmall') {
+			padding: 1.5rem 0;
+
+			ul {
+				@include vendor('flex-direction', 'column');
+				min-width: 10rem;
+				max-width: 100%;
+
+				li {
+					border-left: 0;
+
+					&:first-child {
+						border-top: 0;
+					}
+
+					a {
+						height: 3rem;
+						line-height: 3rem;
+						min-width: 0;
+						width: 100%;
+					}
+				}
+			}
+
+			&.use-middle {
+				&:after {
+					display: none;
+				}
+			}
+
+		}
+	}

@@ -273,15 +273,13 @@ hr {
     border-radius: 4px;
     display: block; }
   .image.left, .image.right {
-    max-width: 40%; }
+    max-width: 45%; }
     .image.left img, .image.right img {
       width: 100%; }
   .image.left {
-    float: left;
     padding: 0 1.5em 1em 0;
     top: 0.25em; }
   .image.right {
-    float: right;
     padding: 0 0 1em 1.5em;
     top: 0.25em; }
   .image.fit {
@@ -460,14 +458,6 @@ button {
 
 /* Wrapper */
 .wrapper {
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: -ms-flex;
-  display: flex;
-  -moz-flex-direction: column;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
   -moz-align-items: center;
   -webkit-align-items: center;
   -ms-align-items: center;
@@ -582,10 +572,10 @@ button {
       top: calc(-3.5rem - 1px); }
   #header .start {
     margin: 0;
-    width: 52%; }
+    width: 54%; }
     #header .start > * {
       height: 25vh;
-      width: 45%;
+      width: 48%;
       -moz-transition: height 0.75s ease-in 1s, width 0s ease-out 2s, opacity 0.325s ease-in-out 0.25s;
       -webkit-transition: height 0.75s ease-in 1s, width 0s ease-out 2s, opacity 0.325s ease-in-out 0.25s;
       -ms-transition: height 0.75s ease-in 1s, width 0s ease-out 2s, opacity 0.325s ease-in-out 0.25s;
@@ -732,6 +722,16 @@ nav {
       nav.use-middle:after {
         display: none; } }
 
+/* Helpers */
+.clear {
+  clear: both; }
+
+.left {
+  float: left; }
+
+.right {
+  float: right; }
+
 /* Main */
 #main .show-on-scroll {
   max-height: 0px;
@@ -748,36 +748,32 @@ nav {
   max-height: 100%;
   opacity: 1; }
 
+/* Timeline */
 #timeline .timeblock {
   height: 100vh;
-  padding: 0 2em;
   background-image: radial-gradient(rgba(160, 9, 9, 0.25) 25%, rgba(0, 0, 0, 0) 55%);
   background-repeat: no-repeat;
   background-size: contain;
   background-position-y: center; }
   #timeline .timeblock:after {
     clear: both; }
-  @media screen and (max-width: 1680px) {
-    #timeline .timeblock {
-      padding: 0rem 10rem; } }
-  @media screen and (max-width: 736px) {
-    #timeline .timeblock {
-      padding: 0rem 1rem; } }
-  @media screen and (max-width: 480px) {
-    #timeline .timeblock {
-      padding: 1rem; } }
 
 #timeline .event {
-  width: 47%; }
+  width: 45%; }
   #timeline .event .event-wrapper {
     display: block;
     border-top: solid 1px #ffffff;
     border-bottom: solid 1px #ffffff;
-    height: 30vh; }
-    #timeline .event .event-wrapper.is-visible {
-      padding: 1em; }
-  #timeline .event h3.year {
-    font-size: 24px; }
+    padding: 2.5vh 0; }
+    #timeline .event .event-wrapper .left, #timeline .event .event-wrapper .right {
+      width: 48%; }
+    #timeline .event .event-wrapper .year {
+      font-size: 48px;
+      line-height: 1;
+      margin: 0;
+      font-family: 'Avenir'; }
+    #timeline .event .event-wrapper .desc {
+      margin: 0; }
   #timeline .event:before, #timeline .event:after {
     content: '';
     display: block;
@@ -792,28 +788,29 @@ nav {
   #timeline .event:after {
     bottom: 0; }
 
-#timeline .left {
-  float: left; }
-  #timeline .left:after {
-    height: 45vh; }
-  #timeline .left .show-on-scroll {
-    -moz-transition-delay: 0.25s;
-    -webkit-transition-delay: 0.25s;
-    -ms-transition-delay: 0.25s;
-    transition-delay: 0.25s; }
+#timeline .left:after {
+  height: 45vh; }
 
-#timeline .right {
-  float: right; }
-  #timeline .right:before {
-    height: 45vh; }
-  #timeline .right .show-on-scroll {
-    -moz-transition-delay: 0.5s;
-    -webkit-transition-delay: 0.5s;
-    -ms-transition-delay: 0.5s;
-    transition-delay: 0.5s; }
+#timeline .right:before {
+  height: 45vh; }
 
 #timeline #block-00 {
   background-image: url(../../images/block-00.png); }
+
+#timeline #block-01 {
+  background-image: url(../../images/block-01.png); }
+
+#timeline #block-02 {
+  background-image: url(../../images/block-02.png); }
+
+#timeline #block-03 {
+  background-image: url(../../images/block-03.png); }
+
+#timeline #block-04 {
+  background-image: url(../../images/block-04.png); }
+
+#timeline #block-05 {
+  background-image: url(../../images/block-05.png); }
 
 /* Footer */
 #footer {
