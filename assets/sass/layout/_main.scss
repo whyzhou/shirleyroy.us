@@ -1,46 +1,7 @@
-/* Helpers */
-.clear {
-	clear: both;
-}
-
-.left {
-	float:left;
-}
-
-.right {
-	float:right;
-}
-
-/* Main */
-#main {
-	.show-on-scroll {
-		max-height: 0px;
-		padding: 0 1em;
-		opacity: 0.25;
-		overflow: hidden;
-		@include vendor('transition', (
-			'max-height #{_duration(intro)} ease-in-out 0s',
-			'padding #{_duration(intro)} ease 0s',
-			'opacity #{_duration(article)} ease-in-out 0s'
-		));
-		will-change: max-height, opacity;
-
-	}
-
-	.is-visible {
-		max-height: 100%;
-		opacity: 1;
-	}
-}
-
 /* Timeline */
 #timeline {
 	.timeblock{
-		height: 100vh;
 		background-image: radial-gradient(rgba(160, 9, 9, 0.25) 25%, rgba(0,0,0,0) 55%);
-		background-repeat: no-repeat;
-		background-size: contain;
-		background-position-y: center;
 
 		&:after {
 			clear:both;
@@ -101,26 +62,58 @@
 		}
 	}
 
-	#block-00 {
-		background-image: url(../../images/block-00.png);
+
+/** Background Images **/
+	.timeblock .parallax-layer-back{
+		background-repeat: no-repeat;
+		background-size: contain;
+		background-position-y: center;
 	}
 
-	#block-01 {
-		background-image: url(../../images/block-01.png);
+	#block-00 .parallax-layer-back{
+		background-image: url(../../images/bg-block-00.png);
+		background-color: red;
 	}
 
-	#block-02 {
-		background-image: url(../../images/block-02.png);
+	#block-01 .parallax-layer-back {
+		background-image: url(../../images/bg-block-01.png);
+		background-color: blue;
 	}
 
-	#block-03 {
+	#block-02 .parallax-layer-back {
+		background-image: url(../../images/bg-block-02.png);
+	}
+
+	#block-03 .parallax-layer-back {
 		background-image: url(../../images/block-03.png);
 	}
 
-	#block-04 {
+	#block-04 .parallax-layer-back {
 		background-image: url(../../images/block-04.png);
 	}
-	#block-05 {
+	#block-05 .parallax-layer-back {
 		background-image: url(../../images/block-05.png);
+	}
+}
+
+/* Main */
+#main {
+	.show-on-scroll {
+		max-height: 0px;
+		padding: 0 1em;
+		opacity: 0.25;
+		overflow: hidden;
+		@include vendor('transition', (
+			'max-height #{_duration(intro)} ease-in-out 0s',
+			'padding #{_duration(intro)} ease 0s',
+			'opacity #{_duration(article)} ease-in-out 0s'
+		));
+		will-change: max-height, opacity;
+
+	}
+
+	.is-visible {
+		max-height: 100%;
+		opacity: 1;
 	}
 }

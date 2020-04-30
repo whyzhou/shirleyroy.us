@@ -194,7 +194,7 @@ blockquote {
 
 code {
   background: rgba(255, 255, 255, 0.075);
-  border-radius: 4px;
+  border-radius: 3px;
   font-family: "Courier New", monospace;
   font-size: 0.9rem;
   margin: 0 0.25rem;
@@ -252,7 +252,7 @@ hr {
 
 /* Image */
 .image {
-  border-radius: 4px;
+  border-radius: 3px;
   border: 0;
   display: inline-block;
   position: relative; }
@@ -260,7 +260,7 @@ hr {
     pointer-events: none;
     background-image: url("../../images/overlay.png");
     background-color: rgba(19, 21, 25, 0.5);
-    border-radius: 4px;
+    border-radius: 3px;
     content: '';
     display: block;
     height: 100%;
@@ -270,7 +270,7 @@ hr {
     top: 0;
     width: 100%; }
   .image img {
-    border-radius: 4px;
+    border-radius: 3px;
     display: block; }
   .image.left, .image.right {
     max-width: 45%; }
@@ -380,7 +380,7 @@ button,
   -ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
   background-color: transparent;
-  border-radius: 4px;
+  border-radius: 3px;
   border: 0;
   box-shadow: inset 0 0 0 1px #ffffff;
   color: #ffffff !important;
@@ -456,6 +456,16 @@ input[type="button"],
 button {
   line-height: calc(2.75rem - 2px); }
 
+/* Helpers */
+.clear {
+  clear: both; }
+
+.left {
+  float: left; }
+
+.right {
+  float: right; }
+
 /* Wrapper */
 .wrapper {
   -moz-align-items: center;
@@ -472,6 +482,54 @@ button {
   @media screen and (max-width: 736px) {
     .wrapper {
       padding: 0rem 1rem; } }
+
+/* Parallax */
+.parallax {
+  height: 500px;
+  /* fallback for older browsers */
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-perspective: 300px;
+  perspective: 300px; }
+  .parallax .parallax-group {
+    position: relative;
+    height: 500px;
+    /* fallback for older browsers */
+    height: 100vh;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d; }
+  .parallax .parallax-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0; }
+  .parallax .parallax-layer-fore {
+    -webkit-transform: translateZ(90px) scale(0.7);
+    transform: translateZ(90px) scale(0.7);
+    z-index: 1; }
+  .parallax .parallax-layer-base {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    z-index: 4; }
+  .parallax .parallax-layer-back {
+    -webkit-transform: translateZ(-300px) scale(2);
+    transform: translateZ(-300px) scale(2);
+    z-index: 3; }
+
+/* Debugger styles - used to show the effect  */
+.debug-on .parallax-group {
+  -webkit-transform: translate3d(800px, 0, -800px) rotateY(30deg);
+  transform: translate3d(700px, 0, -800px) rotateY(30deg); }
+
+.debug-on .parallax-layer {
+  box-shadow: 0 0 0 2px #000;
+  opacity: 0.9; }
+
+.parallax-group {
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: transform 0.5s; }
 
 /* Header */
 #header {
@@ -722,15 +780,64 @@ nav {
       nav.use-middle:after {
         display: none; } }
 
-/* Helpers */
-.clear {
-  clear: both; }
-
-.left {
-  float: left; }
-
-.right {
-  float: right; }
+/* Timeline */
+#timeline {
+  /** Background Images **/ }
+  #timeline .timeblock {
+    background-image: radial-gradient(rgba(160, 9, 9, 0.25) 25%, rgba(0, 0, 0, 0) 55%); }
+    #timeline .timeblock:after {
+      clear: both; }
+  #timeline .event {
+    width: 45%; }
+    #timeline .event .event-wrapper {
+      display: block;
+      border-top: solid 1px #ffffff;
+      border-bottom: solid 1px #ffffff;
+      padding: 2.5vh 0; }
+      #timeline .event .event-wrapper .left, #timeline .event .event-wrapper .right {
+        width: 48%; }
+      #timeline .event .event-wrapper .year {
+        font-size: 48px;
+        line-height: 1;
+        margin: 0;
+        font-family: 'Avenir'; }
+      #timeline .event .event-wrapper .desc {
+        margin: 0; }
+    #timeline .event:before, #timeline .event:after {
+      content: '';
+      display: block;
+      position: relative;
+      left: calc(50% - 1px);
+      width: 1px;
+      background: #ffffff;
+      height: 25vh;
+      transition: opacity .3s .25s ease-out; }
+    #timeline .event:before {
+      top: 0; }
+    #timeline .event:after {
+      bottom: 0; }
+  #timeline .left:after {
+    height: 45vh; }
+  #timeline .right:before {
+    height: 45vh; }
+  #timeline .timeblock .parallax-layer-back {
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position-y: center; }
+  #timeline #block-00 .parallax-layer-back {
+    background-image: url(../../images/bg-block-00.png);
+    background-color: red; }
+  #timeline #block-01 .parallax-layer-back {
+    background-image: url(../../images/bg-block-01.png);
+    background-color: blue; }
+  #timeline #block-02 .parallax-layer-back {
+    background-image: url(../../images/bg-block-02.png); }
+  #timeline #block-03 .parallax-layer-back {
+    background-image: url(../../images/block-03.png); }
+  #timeline #block-04 .parallax-layer-back {
+    background-image: url(../../images/block-04.png); }
+  #timeline #block-05 .parallax-layer-back {
+    background-image: url(../../images/block-05.png); }
 
 /* Main */
 #main .show-on-scroll {
@@ -747,70 +854,6 @@ nav {
 #main .is-visible {
   max-height: 100%;
   opacity: 1; }
-
-/* Timeline */
-#timeline .timeblock {
-  height: 100vh;
-  background-image: radial-gradient(rgba(160, 9, 9, 0.25) 25%, rgba(0, 0, 0, 0) 55%);
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position-y: center; }
-  #timeline .timeblock:after {
-    clear: both; }
-
-#timeline .event {
-  width: 45%; }
-  #timeline .event .event-wrapper {
-    display: block;
-    border-top: solid 1px #ffffff;
-    border-bottom: solid 1px #ffffff;
-    padding: 2.5vh 0; }
-    #timeline .event .event-wrapper .left, #timeline .event .event-wrapper .right {
-      width: 48%; }
-    #timeline .event .event-wrapper .year {
-      font-size: 48px;
-      line-height: 1;
-      margin: 0;
-      font-family: 'Avenir'; }
-    #timeline .event .event-wrapper .desc {
-      margin: 0; }
-  #timeline .event:before, #timeline .event:after {
-    content: '';
-    display: block;
-    position: relative;
-    left: calc(50% - 1px);
-    width: 1px;
-    background: #ffffff;
-    height: 25vh;
-    transition: opacity .3s .25s ease-out; }
-  #timeline .event:before {
-    top: 0; }
-  #timeline .event:after {
-    bottom: 0; }
-
-#timeline .left:after {
-  height: 45vh; }
-
-#timeline .right:before {
-  height: 45vh; }
-
-#timeline #block-00 {
-  background-image: url(../../images/block-00.png); }
-
-#timeline #block-01 {
-  background-image: url(../../images/block-01.png); }
-
-#timeline #block-02 {
-  background-image: url(../../images/block-02.png); }
-
-#timeline #block-03 {
-  background-image: url(../../images/block-03.png); }
-
-#timeline #block-04 {
-  background-image: url(../../images/block-04.png); }
-
-#timeline #block-05 {
-  background-image: url(../../images/block-05.png); }
 
 /* Footer */
 #footer {
