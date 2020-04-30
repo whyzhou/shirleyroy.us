@@ -3,21 +3,3 @@
 /// html5up.net | @ajlkn
 /// Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 ///
-
-/* Wrapper */
-
-	.wrapper {
-		@include vendor('align-items', 'center');
-		position: relative;
-		width: 100%;
-		padding: 0rem 2rem;
-		z-index: 3;
-
-		@include breakpoint('<=xlarge') {
-			padding: 0rem 10rem;
-		}
-
-		@include breakpoint('<=small') {
-			padding: 0rem 1rem;
-		}
-	}

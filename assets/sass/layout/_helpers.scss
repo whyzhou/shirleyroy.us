@@ -1,0 +1,91 @@
+
+/* Helpers */
+.clear {
+	clear: both;
+}
+
+.left {
+	float:left;
+}
+
+.right {
+	float:right;
+}
+
+/* Wrapper */
+
+.wrapper {
+  @include vendor('align-items', 'center');
+  position: relative;
+  width: 100%;
+  padding: 0rem 2rem;
+  z-index: 3;
+
+  @include breakpoint('<=xlarge') {
+    padding: 0rem 10rem;
+  }
+
+  @include breakpoint('<=small') {
+    padding: 0rem 1rem;
+  }
+}
+
+
+/* Parallax */
+.parallax {
+  height: 500px; /* fallback for older browsers */
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-perspective: 300px;
+  perspective: 300px;
+
+  .parallax-group {
+    position: relative;
+    height: 500px; /* fallback for older browsers */
+    height: 100vh;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+  }
+
+  .parallax-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  .parallax-layer-fore {
+    -webkit-transform: translateZ(90px) scale(.7);
+    transform: translateZ(90px) scale(.7);
+    z-index: 1;
+  }
+
+  .parallax-layer-base {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    z-index: 4;
+  }
+
+  .parallax-layer-back {
+    -webkit-transform: translateZ(-300px) scale(2);
+    transform: translateZ(-300px) scale(2);
+    z-index: 3;
+  }
+
+}
+
+/* Debugger styles - used to show the effect  */
+.debug-on .parallax-group {
+  -webkit-transform: translate3d(800px, 0, -800px) rotateY(30deg);
+  transform: translate3d(700px, 0, -800px) rotateY(30deg);
+}
+.debug-on .parallax-layer {
+  box-shadow: 0 0 0 2px #000;
+  opacity: 0.9;
+}
+.parallax-group {
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+}
